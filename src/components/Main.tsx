@@ -36,7 +36,7 @@ function Main({onColChange, cols}: {onColChange: any, cols: String[]}) {
 
 
   return (
-    <main className="w-full min-h-full p-1">
+    <main className="w-full min-h-full flex">
         {columns.length === 0 ? <Emptyboard addNewCol={addNewCol}/> : <Columnsboard names={columns} />}
         <div className={modal}>
           <button onClick={() => setModal("hidden")} className="w-full h-1/10 text-right p-1 px-2">X</button>

@@ -12,9 +12,9 @@ function Columnsboard({names}: {names: any}) {
     }
     // console.log(totalColumns);
     return (
-        <div className="w-full h-full flex">
+        <div className="w-full flex">
             {totalColumns}
-            <div className="bg-gray-400 w-1/4 h-full mx-1 text-size-3 flex justify-center items-center text-lg">
+            <div className="bg-gray-400 w-1/4 text-size-3 flex justify-center items-center text-lg my-1">
                 <p>+ Add new column</p>
             </div>
         </div>
