@@ -1,22 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Emptyboard from "./maincomponent/Emptyboard";
+import Columnsboard from "./maincomponent/Columnsboard";
 
 // board get cols
-function Main() {
-  let col = 0;
+function Main({onColChange, cols}: {onColChange: any, cols: String[]}) {
   const [modal, setModal] = useState("w-full h-full bg-blue-500 hidden");
-  const columns:any = [];
+  // const [columns, setColumns] = useState<String[]>(cols);
+  let columns = [...cols];
   const [currName, setCurrName] = useState("");
   function addNewCol() {
     setModal("inset-10 bg-white border z-1 fixed");
   }
 
   function addSuccess() {
-    columns.push(currName);
+    // columns.push(currName);
+    // setColumns(columns);
+    // columns.push(currName);
+    columns = [...cols, currName.toLocaleUpperCase()]
+    onColChange(columns);
     setModal("hidden");
-    console.log(columns)
+    // console.log(columns)
   }
 
+  // useEffect(() => {
+  //   console.log(columns)
+  // }, [columns])
   function updateName(event: any) {
     setCurrName(event.target.value);
   }
@@ -28,8 +36,8 @@ function Main() {
 
 
   return (
-    <main className="w-full min-h-full">
-        {col === 0 ? <Emptyboard addNewCol={addNewCol}/> : <p>something went wrong</p>}
+    <main className="w-full min-h-full p-1">
+        {columns.length === 0 ? <Emptyboard addNewCol={addNewCol}/> : <Columnsboard names={columns} />}
         <div className={modal}>
           <button onClick={() => setModal("hidden")} className="w-full h-1/10 text-right p-1 px-2">X</button>
           <section className="w-full h-2/5 flex flex-col items-center justify-between">
