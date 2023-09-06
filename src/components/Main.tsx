@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Emptyboard from "./maincomponent/Emptyboard";
 import Columnsboard from "./maincomponent/Columnsboard";
 import Modal from "./maincomponent/Modal";
@@ -10,7 +10,7 @@ function Main({onColChange, cols}: {onColChange: any, cols: String[]}) {
   let columns = [...cols];
   const [currName, setCurrName] = useState("");
   function addNewCol() {
-    setModal("inset-10 bg-white border z-1 fixed");
+    setModal("inset-20 bg-white border z-1 fixed");
   }
 
   function addSuccess() {
