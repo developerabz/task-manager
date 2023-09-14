@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import {Navbar, getExItems} from './components/Navbar';
 import Main from './components/Main';
+import {ReactComponent as LightKanban} from './assets/logo-dark.svg';
+import {ReactComponent as DarkKanban} from './assets/logo-light.svg';
 
 function App() {
   const [items, setItems] = useState(getExItems());
   const [isDark, setDark] = useState(false);
+  const [kanban, setKanban] = useState(<LightKanban />);
   const [ondark, setOnDark] = useState("bg-gray-300 box-border min-h-screen flex flex-col bg-white text-black");
   const [boards, setBoards] = useState({
     boardArr: [
@@ -39,9 +42,17 @@ function App() {
 
   function onDarkMode() {
     setDark(prevDark => !prevDark);
-    isDark ? setOnDark("box-border min-h-screen flex flex-col bg-black text-white") :
-    setOnDark("box-border min-h-screen flex flex-col bg-white text-black")
   }
+
+  useEffect(() => {
+    if (isDark) {
+      setOnDark("box-border min-h-screen flex flex-col bg-black text-white");
+      setKanban(<DarkKanban />);
+    } else {
+      setOnDark("box-border min-h-screen flex flex-col bg-white text-black");
+      setKanban(<LightKanban />);
+    }
+  }, [isDark]);
 
   function onColChange(columns: any) {
     const boardObj = boards;
@@ -64,7 +75,7 @@ function App() {
     <div className={ondark}>
       <Header title={
         items.boardObjs.filter((b: any) => b.id === items.selected)[0].boardName
-      }/>
+      } kanban={kanban}/>
       <section className='flex flex-1'>
         <Navbar onStateChange={onStateChange} onDarkMode={onDarkMode}/>
         <Main onColChange={onColChange} cols={

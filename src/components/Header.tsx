@@ -1,8 +1,8 @@
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import {ReactComponent as LightKanban} from '../assets/logo-dark.svg';
+
 import { useState } from 'react';
 import Taskmodal from './maincomponent/Taskmodal';
-function Header({title}: {title: String}) {
+function Header({title, kanban}: {title: String, kanban: any}) {
   const [modal, setModal] = useState("w-full h-full bg-blue-500 hidden");
   // const [columns, setColumns] = useState<String[]>(cols);
 //   let columns = [...cols];
@@ -51,7 +51,7 @@ function Header({title}: {title: String}) {
   }
   return (
     <header className="flex justify-between p-4 items-center">
-        <LightKanban />
+        {kanban}
         <h1 className="text-xl font-bold text-black-600 font-sans">
         {title}
         </h1>
