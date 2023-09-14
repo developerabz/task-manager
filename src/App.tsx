@@ -39,8 +39,8 @@ function App() {
 
   function onDarkMode() {
     setDark(prevDark => !prevDark);
-    isDark ? setOnDark("bg-gray-300 box-border min-h-screen flex flex-col bg-black text-white") :
-    setOnDark("bg-gray-300 box-border min-h-screen flex flex-col bg-white text-black")
+    isDark ? setOnDark("box-border min-h-screen flex flex-col bg-black text-white") :
+    setOnDark("box-border min-h-screen flex flex-col bg-white text-black")
   }
 
   function onColChange(columns: any) {
