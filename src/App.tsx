@@ -7,6 +7,8 @@ import Main from './components/Main';
 
 function App() {
   const [items, setItems] = useState(getExItems());
+  const [isDark, setDark] = useState(false);
+  const [ondark, setOnDark] = useState("bg-gray-300 box-border min-h-screen flex flex-col bg-white text-black");
   const [boards, setBoards] = useState({
     boardArr: [
       {
@@ -35,6 +37,12 @@ function App() {
 
   }
 
+  function onDarkMode() {
+    setDark(prevDark => !prevDark);
+    isDark ? setOnDark("bg-gray-300 box-border min-h-screen flex flex-col bg-black text-white") :
+    setOnDark("bg-gray-300 box-border min-h-screen flex flex-col bg-white text-black")
+  }
+
   function onColChange(columns: any) {
     const boardObj = boards;
     const boardArray = [...boards.boardArr];
@@ -53,12 +61,12 @@ function App() {
   // console.log(boards.boardArr.filter((b: any) => b.id === boards.selected)[0].cols)
   // console.log(items.boardObjs.filter((b: any) => b.id === items.selected))
   return (
-    <div className="bg-gray-300 box-border min-h-screen flex flex-col" >
+    <div className={ondark}>
       <Header title={
         items.boardObjs.filter((b: any) => b.id === items.selected)[0].boardName
       }/>
       <section className='flex flex-1'>
-        <Navbar onStateChange={onStateChange}/>
+        <Navbar onStateChange={onStateChange} onDarkMode={onDarkMode}/>
         <Main onColChange={onColChange} cols={
           boards.boardArr.filter((b: any) => b.id === boards.selected)[0].cols
         } />

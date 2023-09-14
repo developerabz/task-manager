@@ -50,7 +50,7 @@ function Header({title}: {title: String}) {
     onAdd
   }
   return (
-    <header className="bg-white flex justify-between p-4 items-center">
+    <header className="flex justify-between p-4 items-center">
         <LightKanban />
         <h1 className="text-xl font-bold text-black-600 font-sans">
         {title}

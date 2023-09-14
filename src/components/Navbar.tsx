@@ -16,7 +16,7 @@ function getExItems() {
 }
 
 
-function Navbar({onStateChange}: {onStateChange:any}) {
+function Navbar({onStateChange, onDarkMode}: {onStateChange:any, onDarkMode: any}) {
     const [items, setItems] = useState({
         boardObjs: [
             {id: 0, boardName: "Platform Launch"},
@@ -36,14 +36,15 @@ function Navbar({onStateChange}: {onStateChange:any}) {
   }, [items]);
 
   return (
-    <aside className='min-h-full bg-white w-1/5 flex flex-col items-start py-3 pr-3'>
+    <aside className='min-h-full w-1/5 flex flex-col items-start py-3 pr-3'>
         <p className='text-xs text-gray-700 pl-3'>ALL BOARDS {count}</p>
         {/* <Boarditem boardName="Platform Launch" color={color} onClick={() => {setColor("bg-purple-800")}} />
         <Boarditem boardName="Marketing Plan" color={color} onClick={() => {setColor("bg-white-800")}}/>
         <Boarditem boardName="Roadmap" color={color} onClick={() => {setColor("bg-red-800")}}/> */}
         {items.boardObjs.map((b, key) => {
-            return <Boarditem boardName={b.boardName} color={items.selected === b.id ? "bg-purple-800 text-white" : "bg-white"} onClick={()=>setSelected(b.id)} key={key} />;
+            return <Boarditem boardName={b.boardName} color={items.selected === b.id ? "bg-purple-800 text-white" : ""} onClick={()=>setSelected(b.id)} key={key} />;
         })}
+        <div className='flex flex-1 w-full self-center justify-center'><div className='rounded bg-black w-1/4 self-end content-center' onClick={() => onDarkMode()}>Light</div></div>
     </aside>
   );
 }
