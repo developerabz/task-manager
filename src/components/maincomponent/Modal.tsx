@@ -9,7 +9,7 @@ function Modal({modal, handleSubmit, updateName, onClose, onAdd}: {modal: any, h
               <div>
                 <input type="text" className="bg-gray-200 p-2" onChange={updateName} placeholder="Column Name"/>
               </div>
-              <button className="bg-purple-800 text-white rounded-r-2xl p-2 hover:bg-purple-900" onClick={onAdd}>Add Column</button>
+              <button className="bg-purple-800 text-white rounded-r-2xl p-2 hover:bg-purple-900 hover:animate-pulse" onClick={onAdd}>Add Column</button>
             </form>
           </section>
         </div>

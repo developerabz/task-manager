@@ -57,7 +57,7 @@ function Header({title}: {title: String}) {
         </h1>
         <div>
             <button
-              className="bg-purple-800 text-white rounded-3xl p-2 hover:bg-purple-900"
+              className="bg-purple-800 text-white rounded-3xl p-2 hover:bg-purple-900 hover:animate-pulse"
               onClick={addNewCol}
             >+ Add New Task</button>
             <button><BsThreeDotsVertical/></button>
