@@ -1,7 +1,7 @@
 import Columnboard from "./Columnboard";
 import Modal from "./Modal";
 
-function Columnsboard({names, addNewCol}: {names: any, addNewCol: any}) {
+export default ({names, addNewCol}: {names: any, addNewCol: any}) => {
 
     return (
         <div className="w-full flex">
@@ -15,4 +15,3 @@ function Columnsboard({names, addNewCol}: {names: any, addNewCol: any}) {
     );
 }
 
-export default Columnsboard;
