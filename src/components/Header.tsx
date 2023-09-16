@@ -46,6 +46,7 @@ function Header({title, kanban}: {title: String, kanban: any}) {
   }
   function onClose() {
     setModal("hidden");
+    setSignupModal("hidden");
   }
 
   const modalProps = {
@@ -66,7 +67,7 @@ function Header({title, kanban}: {title: String, kanban: any}) {
               onClick={openSignUpModal}>
               Sign Up
             </button>
-            <SignUp modalclass={signupModal} />
+            <SignUp modalclass={signupModal} onClose={onClose} />
             <button className="bg-purple-800 text-white rounded-3xl p-2 hover:bg-purple-900 hover:animate-pulse"
               >
               Login

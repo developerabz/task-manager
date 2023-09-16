@@ -36,7 +36,7 @@ const createUser = (email: string, password: string) => {
         });
   }
   
-  const SignUp = ({modalclass}: {modalclass: string}) => {
+const SignUp = ({modalclass, onClose}: {modalclass: string, onClose: any}) => {
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
@@ -99,20 +99,13 @@ const createUser = (email: string, password: string) => {
     }
     return (
         <div className={modalclass}>
+            <button onClick={onClose} className="w-full h-1/10 text-right p-1 px-2">X</button>
             <section className="w-full h-full flex flex-col justify-center items-center">
-                <div>
-                    <input type="text" className='border' onChange={handleFirstName} placeholder="First Name"/>
-                </div>
-                <div>
-                    <input type="text" className='border' onChange={handleLastName} placeholder="Last Name" />
-                </div>
-                <div>
-                    <input type="email" className='border' onChange={handleEmail} placeholder="Email"/>
-                </div>
-                <div>
-                    <input type="password" className='border' onChange={handlePassword} placeholder="Password" />
-                </div>
-                <button className="bg-purple-800 text-white rounded-b-2xl p-2 hover:bg-purple-900 w-1/3"  onClick={() => createUser(user.email, user.password)} >Register</button>
+                <input type="text" className='w-1/4 border rounded-t-2xl' onChange={handleFirstName} placeholder="First Name"/>
+                <input type="text" className='w-1/4 border' onChange={handleLastName} placeholder="Last Name" />
+                <input type="email" className='w-1/4 border' onChange={handleEmail} placeholder="Email"/>
+                <input type="password" className='w-1/4 border' onChange={handlePassword} placeholder="Password" />
+                <button className="bg-purple-800 text-white rounded-b-2xl hover:bg-purple-900 w-1/4"  onClick={() => createUser(user.email, user.password)} >Register</button>
             </section>
         </div>
     );
